@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "unifiedjs.vscode-mdx",
+    "astro-build.astro-vscode",
+    "oxc.oxc-vscode"
+  ]
+}

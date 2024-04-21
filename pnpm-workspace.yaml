@@ -1,0 +1,10 @@
+packages:
+  # all packages in direct subdirs of packages/
+  - 'core/*'
+  - 'packages/*'
+  - 'apps/*'
+  - 'wps/*'
+  - 'build'
+  - 'docs'
+  - 'tools/*'
+  

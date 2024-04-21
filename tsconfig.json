@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ESNext"
+    ],
+    "rootDir": "./"
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

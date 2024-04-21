@@ -1,0 +1,38 @@
+{
+  "name": "mikoto",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "new:build": "turbo run build --force",
+    "test": "turbo run test",
+    "schema": "turbo run schema --cache-dir=.turbo",
+    "docs:dev": "pnpm --filter docs dev",
+    "docs:build": "pnpm --filter docs build",
+    "docs:preview": "pnpm --filter docs preview",
+    "docs:start": "pnpm --filter docs start",
+    "format": "dprint fmt",
+    "lint": "oxlint -c ./eslintrc.json --fix",
+    "changeset": "changeset"
+  },
+  "keywords": [
+    "bilioutils",
+    "bilitools",
+    "bilibili"
+  ],
+  "author": "catlair",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.12.7",
+    "dprint": "^0.45.1",
+    "oxlint": "^0.2.18",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.2",
+    "turbo": "^1.13.2",
+    "typescript": "^5.4.5"
+  }
+}
