@@ -2,6 +2,7 @@
   "recommendations": [
     "unifiedjs.vscode-mdx",
     "astro-build.astro-vscode",
-    "oxc.oxc-vscode"
+    "oxc.oxc-vscode",
+    "dprint.dprint"
   ]
 }

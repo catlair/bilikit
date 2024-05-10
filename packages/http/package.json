@@ -1,0 +1,42 @@
+{
+  "name": "@bilikit/http",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    }
+  },
+  "main": "index.ts",
+  "scripts": {
+    "prepublish": "copyfiles package.json README.md dist/",
+    "build": "tsup --dts-resolve"
+  },
+  "keywords": [],
+  "author": "catlair",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@types/tough-cookie": "^4.0.5",
+    "defu": "^6.1.4",
+    "destr": "^2.0.3",
+    "got": "^14.2.1",
+    "lodash-es": "^4.17.21",
+    "tough-cookie": "^4.1.4"
+  },
+  "publishConfig": {
+    "directory": "dist",
+    "linkDirectory": false,
+    "exports": {
+      ".": {
+        "import": "./index.mjs",
+        "require": "./index.cjs"
+      }
+    },
+    "main": "index.cjs",
+    "module": "index.mjs",
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

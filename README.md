@@ -10,6 +10,18 @@
 
 **by：通义千问**，文案来自通义千问，但确确实实是我想说。
 
+## 旧版 BiliOutils 备份
+
+群：https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=M6EqCB56RFne22PqN2EfppbbMmELC1zi&authKey=d98Vo3%2FAflqfDRjEV7jdbupmxm4ffVOtSyOZdUq1lm39oc8tjFWvI%2Fb1a3t7zKO0&noverify=0&group_code=318327803
+
+## 待办
+
+需要功能请提 ISSUE ，提了不一定做，但不提一定不会做。
+
+- [ ] 大积分任务
+- [ ] 每日投币/分享/观看
+- [ ] 。。。
+
 ## 项目介绍
 
 > [!IMPORTANT]
