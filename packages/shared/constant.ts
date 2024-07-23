@@ -19,6 +19,6 @@ export const ORIGIN_URLS = {
 export const REFERER_URLS = {
   WWW: 'https://www.bilibili.com/',
   BIGPOINT: 'https://big.bilibili.com/mobile/bigPoint',
-  BIGPOINTTASK: 'https://big.bilibili.com/mobile/bigPoint/task',
+  BIGPOINT_TASK: 'https://big.bilibili.com/mobile/bigPoint/task',
   JUDGE: 'https://www.bilibili.com/judgement/',
 } as const

@@ -2,13 +2,13 @@ import { defu } from 'defu'
 import destr from 'destr'
 import { type ExtendOptions as GotExtendOptions, got, type Options as GotOptions } from 'got'
 import { isPlainObject, merge } from 'lodash-es'
-import { CookieJar } from 'tough-cookie'
 import { URLSearchParams } from 'url'
+import { CookieJar, createCookieJar } from './cookie.js'
 import { toLowerCaseHeaders } from './utils.js'
 
 export { got }
 
-type MyOptions =
+export type MyOptions =
   & Omit<
     & Partial<GotOptions>
     & {
@@ -20,7 +20,10 @@ type MyOptions =
   >
   & {
     body?: GotOptions['body'] | Record<string, any>
+    cookie?: string
   }
+
+export type Options = GotExtendOptions
 
 export function mergeOptions(options: MyOptions, globalOptions: GotExtendOptions) {
   options.headers = toLowerCaseHeaders(options.headers)
@@ -54,7 +57,7 @@ export function mergeOptions(options: MyOptions, globalOptions: GotExtendOptions
   return options
 }
 
-export function createRequest(options: GotExtendOptions = {}) {
+export function createRequest(options: GotExtendOptions & MyOptions = {}) {
   const globalOptions = defu(
     options,
     { method: 'POST', timeout: { request: 30000 }, throwHttpErrors: false } as GotExtendOptions,
@@ -62,7 +65,12 @@ export function createRequest(options: GotExtendOptions = {}) {
   globalOptions.headers = toLowerCaseHeaders(globalOptions.headers)
 
   if (!globalOptions.cookieJar) {
-    globalOptions.cookieJar = new CookieJar()
+    globalOptions.cookieJar = createCookieJar()
+  }
+
+  if (globalOptions.cookie) {
+    setCookies(globalOptions.cookie, globalOptions.cookieJar as CookieJar)
+    delete globalOptions.cookie
   }
 
   const api = got.extend(globalOptions)
@@ -91,9 +99,13 @@ export function createRequest(options: GotExtendOptions = {}) {
     request,
     get,
     post,
-    setOptions(options: GotExtendOptions) {
+    setOptions(options: MyOptions) {
       options.headers = toLowerCaseHeaders(options.headers)
       merge(globalOptions, options)
+      if (options.cookie) {
+        http.initCookies(options.cookie, '/')
+        delete globalOptions.cookie
+      }
       return http
     },
     setHeader(key: string, value: string) {
@@ -101,18 +113,23 @@ export function createRequest(options: GotExtendOptions = {}) {
       return http
     },
     setCookie(key: string, value: string, currentUrl: string) {
-      ;(globalOptions.cookieJar as CookieJar).setCookieSync(`${key}=${value}`, currentUrl)
+      ;(globalOptions.cookieJar as CookieJar).setCookie(`${key}=${value}`, currentUrl)
       return http
     },
-    initCookie(cookieString: string, currentUrl: string) {
-      cookieString.split(/;\s?/).filter(Boolean).forEach((cookie) =>
-        (globalOptions.cookieJar as CookieJar).setCookieSync(cookie, currentUrl)
-      )
+    initCookies(cookieString: string, currentUrl: string) {
+      setCookies(cookieString, globalOptions.cookieJar as CookieJar, currentUrl)
+      return http
     },
     getCookie(currentUrl: string) {
-      return (globalOptions.cookieJar as CookieJar).getCookieStringSync(currentUrl)
+      return (globalOptions.cookieJar as CookieJar).getCookieString(currentUrl)
     },
   }
 
   return http
+}
+
+export type HTTP = ReturnType<typeof createRequest>
+
+export function setCookies(cookies: string, cookieJar: CookieJar, currentUrl?: string) {
+  cookies.split(/;\s?/).filter(Boolean).forEach((cookie) => cookieJar.setCookie(cookie, currentUrl))
 }

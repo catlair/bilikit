@@ -6,6 +6,9 @@
   "exports": {
     ".": {
       "import": "./index.ts"
+    },
+    "./cookie": {
+      "import": "./cookie.ts"
     }
   },
   "main": "index.ts",
@@ -32,6 +35,10 @@
       ".": {
         "import": "./index.mjs",
         "require": "./index.cjs"
+      },
+      "./cookie": {
+        "import": "./cookie.mjs",
+        "require": "./cookie.cjs"
       }
     },
     "main": "index.cjs",

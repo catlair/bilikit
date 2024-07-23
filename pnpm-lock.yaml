@@ -72,7 +72,32 @@ importers:
 
   packages/tsconfig: {}
 
+  packages/types: {}
+
   packages/utils:
+    devDependencies:
+      consola:
+        specifier: ^3.2.3
+        version: 3.2.3
+      dayjs:
+        specifier: ^1.11.11
+        version: 1.11.11
+    publishDirectory: dist
+
+  plugins/auth:
+    dependencies:
+      '@bilikit/http':
+        specifier: workspace:^
+        version: link:../../packages/http
+      '@bilikit/shared':
+        specifier: workspace:^
+        version: link:../../packages/shared
+      '@bilikit/types':
+        specifier: workspace:^
+        version: link:../../packages/types
+      '@bilikit/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
     publishDirectory: dist
 
   plugins/bigPoint:
@@ -83,12 +108,12 @@ importers:
       '@bilikit/shared':
         specifier: workspace:^
         version: link:../../packages/shared
+      '@bilikit/types':
+        specifier: workspace:^
+        version: link:../../packages/types
       '@bilikit/utils':
         specifier: workspace:^
         version: link:../../packages/utils
-      dayjs:
-        specifier: ^1.11.11
-        version: 1.11.11
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -724,6 +749,10 @@ packages:
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
+  consola@3.2.3:
+    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
+    engines: {node: ^14.18.0 || >=16.10.0}
 
   copyfiles@2.4.1:
     resolution: {integrity: sha512-fereAvAvxDrQDOXybk3Qu3dPbOoKoysFMWtkY3mv5BsL8//OSZVL5DCLYqgRfY5cWirgRzlC+WSrxp6Bo3eNZg==}
@@ -2662,6 +2691,8 @@ snapshots:
   commander@4.1.1: {}
 
   concat-map@0.0.1: {}
+
+  consola@3.2.3: {}
 
   copyfiles@2.4.1:
     dependencies:

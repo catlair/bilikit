@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "name": "@bilikit/types",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    }
+  }
+}

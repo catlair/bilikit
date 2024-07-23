@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "@bilikit/utils": "workspace:^",
+    "@bilikit/types": "workspace:^",
     "@bilikit/shared": "workspace:^",
     "@bilikit/http": "workspace:^",
-    "dayjs": "^1.11.11",
     "defu": "^6.1.4"
   }
 }

@@ -1,20 +1,10 @@
 {
-  "name": "@bilikit/utils",
+  "name": "@bilikit/auth",
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "prepublish": "copyfiles package.json README.md dist/",
-    "build": "tsup --dts-resolve"
-  },
-  "exports": {
-    ".": {
-      "import": "./index.ts"
-    },
-    "./is": {
-      "import": "./is.ts"
-    }
   },
   "keywords": [],
   "author": "catlair",
@@ -27,9 +17,9 @@
         "import": "./index.mjs",
         "require": "./index.cjs"
       },
-      "./is": {
-        "import": "./is.mjs",
-        "require": "./is.cjs"
+      "./api": {
+        "import": "./api.mjs",
+        "require": "./api.cjs"
       }
     },
     "main": "index.cjs",
@@ -37,8 +27,10 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "devDependencies": {
-    "consola": "^3.2.3",
-    "dayjs": "^1.11.11"
+  "dependencies": {
+    "@bilikit/utils": "workspace:^",
+    "@bilikit/types": "workspace:^",
+    "@bilikit/shared": "workspace:^",
+    "@bilikit/http": "workspace:^"
   }
 }
